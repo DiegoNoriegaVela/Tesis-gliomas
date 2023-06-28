@@ -1,0 +1,6 @@
+.vscode
+/uploads
+/results
+/__pycache__
+/myenv
+/util
