@@ -25,19 +25,19 @@ test = pd.DataFrame({
 })
 
 #Cargamos modelo clasificador preentrenado
-with open('utils/classificador-resnet-modelo1.json', 'r') as json_file:
+with open('util/classificador-resnet-modelo1.json', 'r') as json_file:
     json_savedModel= json_file.read()
 modelo_clasificador = tf.keras.models.model_from_json(json_savedModel)
-modelo_clasificador.load_weights('utils/clasificador-resnet-pesos.hdf5')
+modelo_clasificador.load_weights('util/clasificador-resnet-pesos.hdf5')
 modelo_clasificador.compile(loss = 'categorical_crossentropy', optimizer='adam', metrics= ["accuracy"])
 
 #SEGMENTACION
 #Cargamos modelo segmentador preentrenado
-with open('utils/ResUNet-MRI.json', 'r') as json_file:
+with open('util/ResUNet-MRI.json', 'r') as json_file:
     json_savedModel= json_file.read()
 #cargar la arquitectura del modelo
 model_seg = tf.keras.models.model_from_json(json_savedModel)
-model_seg.load_weights('utils/weights_seg.hdf5')
+model_seg.load_weights('util/weights_seg.hdf5')
 adam = tf.keras.optimizers.Adam(lr = 0.05, epsilon = 0.1)
 model_seg.compile(optimizer = adam, loss = focal_tversky, metrics = [tversky])
 
