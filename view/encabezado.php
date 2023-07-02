@@ -22,7 +22,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh; /* Opcional: ajusta la altura según tus necesidades */
+      height: 50vh; /* Opcional: ajusta la altura según tus necesidades */
     }
 
     .imagen-centrada img {

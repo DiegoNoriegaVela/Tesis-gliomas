@@ -5,7 +5,7 @@
 
           <div class="box-header purple">
             <h3>Input</h3>
-            <small>Por favor ingrese sus datos y la imágen MRI</small>
+            <small>Por favor ingrese su DNI</small>
           </div>
 
           <div class="box-body purple-100">

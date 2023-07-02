@@ -64,15 +64,31 @@ class UsersControlador{
             $usuario=$this->user->ObtenerUsuario($_GET['dni']);
         }
 
-
-        if(isset($_POST['nombreArchivo'])){
-            $rutaArchivo = 'results/'.$_POST['nombreArchivo'];
-
+        if(isset($_POST['nombreArchivoInput'])){
+            $rutaArchivo = 'uploads/'.$_POST['nombreArchivoInput'];
             if (file_exists($rutaArchivo)) {
                 // Configurar las cabeceras de la respuesta HTTP
                 header('Content-Description: File Transfer');
                 header('Content-Type: application/octet-stream');
-                header('Content-Disposition: attachment; filename=' . 'resultado_'.$usuario->getUsers_dni().'.jpg');
+                header('Content-Disposition: attachment; filename=' . 'MRI_'.$usuario->getUsers_dni().'.jpg');
+                header('Expires: 0');
+                header('Cache-Control: must-revalidate');
+                header('Pragma: public');
+                header('Content-Length: ' . filesize($rutaArchivo));
+
+                // Leer y enviar el contenido del archivo
+                readfile($rutaArchivo);
+                exit;
+            }
+        }
+
+        if(isset($_POST['nombreArchivoOutput'])){
+            $rutaArchivo = 'results/'.$_POST['nombreArchivoOutput'];
+            if (file_exists($rutaArchivo)) {
+                // Configurar las cabeceras de la respuesta HTTP
+                header('Content-Description: File Transfer');
+                header('Content-Type: application/octet-stream');
+                header('Content-Disposition: attachment; filename=' . 'Resultado_'.$usuario->getUsers_dni().'.jpg');
                 header('Expires: 0');
                 header('Cache-Control: must-revalidate');
                 header('Pragma: public');
